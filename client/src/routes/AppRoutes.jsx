@@ -13,6 +13,7 @@ import Unauthorized from "../pages/Unauthorized";
 import EventDetails from "../pages/EventDetails";
 import MyRegistrations from "../pages/MyRegistrations";
 import OrganizerEvents from "../pages/OrganizerEvents";
+import CreateEvent from "../pages/CreateEvent";
 
 import ProtectedRoute from "./ProtectedRoute";
 

@@ -87,6 +87,15 @@ const AppRoutes = () => {
   }
 />
 
+<Route
+  path="/organizer/events/create"
+  element={
+    <ProtectedRoute allowedRoles={["organizer", "admin"]}>
+      <CreateEvent />
+    </ProtectedRoute>
+  }
+/>
+
     </Routes>
   );
 };

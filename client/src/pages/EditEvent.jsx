@@ -69,30 +69,41 @@ const EditEvent = () => {
     });
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+const handleSubmit = async (e) => {
+  e.preventDefault();
 
-    setError("");
-    setSaving(true);
+  setError("");
+  setSaving(true);
 
-    try {
-      await api.put(`/events/${eventId}`, {
-        ...formData,
-        maxParticipants: Number(formData.maxParticipants),
-      });
+  try {
+    const response = await api.put(`/events/${eventId}`, {
+      title: formData.title,
+      description: formData.description,
+      category: formData.category,
+      venue: formData.venue,
+ eventDate: new Date(formData.eventDate).toISOString(),
+registrationDeadline: new Date(
+  formData.registrationDeadline
+).toISOString(),
+      maxParticipants: Number(formData.maxParticipants),
+      banner: formData.banner,
+    });
 
-      navigate("/organizer/events");
-    } catch (error) {
-      console.error("Update Event Error:", error);
+    console.log("Update Response:", response.data);
 
-      setError(
-        error.response?.data?.message ||
-          "Failed to update event"
-      );
-    } finally {
-      setSaving(false);
-    }
-  };
+    navigate("/organizer/events");
+  } catch (error) {
+    console.error("Update Event Error:", error);
+    console.error("Server Response:", error.response?.data);
+
+    setError(
+      error.response?.data?.message ||
+        "Failed to update event"
+    );
+  } finally {
+    setSaving(false);
+  }
+};
 
   if (loading) {
     return <h2>Loading event...</h2>;

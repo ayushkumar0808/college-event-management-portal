@@ -44,9 +44,6 @@ const OrganizerEvents = () => {
         <button>Create Event</button>
       </Link>
 
-      <Link to={`/organizer/events/${event._id}/edit`}>
-  <button>Edit</button>
-</Link>
 
       {events.length === 0 ? (
         <p>You have not created any events yet.</p>
@@ -72,11 +69,15 @@ const OrganizerEvents = () => {
                   event.eventDate
                 ).toLocaleDateString()}
               </p>
+              <Link to={`/organizer/events/${event._id}/edit`}>
+                <button>Edit</button>
+            </Link>
+
 
               <Link
                 to={`/organizer/events/${event._id}/registrations`}
               >
-                View Registrations
+               <button>View Registrations</button>
               </Link>
             </div>
           ))}

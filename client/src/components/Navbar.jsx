@@ -22,14 +22,23 @@ const Navbar = () => {
 
       <div>
         <Link to="/events">Events</Link>
-        <Link to="/my-registrations">My Registrations</Link>
+
+        {user.role === "student" && (
+          <Link to="/my-registrations">
+            My Registrations
+          </Link>
+        )}
 
         {user.role === "organizer" && (
-          <Link to="/organizer">Organizer Dashboard</Link>
+          <Link to="/organizer">
+            Organizer Dashboard
+          </Link>
         )}
 
         {user.role === "admin" && (
-          <Link to="/admin">Admin Dashboard</Link>
+          <Link to="/admin">
+            Admin Dashboard
+          </Link>
         )}
 
         <span>

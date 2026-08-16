@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import api from "../services/api";
 import { useAuth } from "../context/AuthContext";
-
+import "../App.css"; 
 const Events = () => {
   const { user } = useAuth();
 
@@ -49,7 +49,7 @@ const Events = () => {
       ) : (
         <div>
           {events.map((event) => (
-            <div key={event._id}>
+            <div className="event-card" key={event._id}>
               <h2>{event.title}</h2>
 
               <p>{event.description}</p>

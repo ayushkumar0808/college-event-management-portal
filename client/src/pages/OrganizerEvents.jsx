@@ -44,6 +44,10 @@ const OrganizerEvents = () => {
         <button>Create Event</button>
       </Link>
 
+      <Link to={`/organizer/events/${event._id}/edit`}>
+  <button>Edit</button>
+</Link>
+
       {events.length === 0 ? (
         <p>You have not created any events yet.</p>
       ) : (

@@ -28,6 +28,30 @@ const OrganizerEvents = () => {
     fetchMyEvents();
   }, []);
 
+  const handleDelete = async (eventId) => {
+  const confirmed = window.confirm(
+    "Are you sure you want to delete this event?"
+  );
+
+  if (!confirmed) return;
+
+  try {
+    await api.delete(`/events/${eventId}`);
+
+    // Remove deleted event from UI
+    setEvents((prevEvents) =>
+      prevEvents.filter((event) => event._id !== eventId)
+    );
+  } catch (error) {
+    console.error("Delete Event Error:", error);
+
+    alert(
+      error.response?.data?.message ||
+        "Failed to delete event"
+    );
+  }
+};
+
   if (loading) {
     return <h2>Loading your events...</h2>;
   }
@@ -72,6 +96,8 @@ const OrganizerEvents = () => {
               <Link to={`/organizer/events/${event._id}/edit`}>
                 <button>Edit</button>
             </Link>
+
+            <button onClick={() => handleDelete(event._id)}>Delete</button>
 
 
               <Link

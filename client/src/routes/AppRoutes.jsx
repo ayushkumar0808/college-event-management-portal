@@ -14,6 +14,7 @@ import EventDetails from "../pages/EventDetails";
 import MyRegistrations from "../pages/MyRegistrations";
 import OrganizerEvents from "../pages/OrganizerEvents";
 import CreateEvent from "../pages/CreateEvent";
+import EditEvent from "../pages/EditEvent";
 
 import ProtectedRoute from "./ProtectedRoute";
 
@@ -92,6 +93,15 @@ const AppRoutes = () => {
   element={
     <ProtectedRoute allowedRoles={["organizer", "admin"]}>
       <CreateEvent />
+    </ProtectedRoute>
+  }
+/>
+
+<Route
+  path="/organizer/events/:eventId/edit"
+  element={
+    <ProtectedRoute allowedRoles={["organizer", "admin"]}>
+      <EditEvent />
     </ProtectedRoute>
   }
 />

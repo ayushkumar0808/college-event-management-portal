@@ -1,11 +1,15 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import api from "../services/api";
+import { useAuth } from "../context/AuthContext";
 
 const Events = () => {
+  const { user } = useAuth();
+
   const [events, setEvents] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+  
 
   useEffect(() => {
     const fetchEvents = async () => {
@@ -48,26 +52,25 @@ const Events = () => {
             <div key={event._id}>
               <h2>{event.title}</h2>
 
-              <p>
-                {event.description}
-              </p>
+              <p>{event.description}</p>
 
-              <p>
-                Category: {event.category}
-              </p>
+              <p>Category: {event.category}</p>
 
-              <p>
-                Venue: {event.venue}
-              </p>
+              <p>Venue: {event.venue}</p>
 
               <p>
                 Date:{" "}
-                {new Date(event.eventDate).toLocaleDateString()}
+                {new Date(
+                  event.eventDate
+                ).toLocaleDateString()}
               </p>
 
-              <Link to={`/events/${event._id}`}>
-                View Details
-              </Link>
+              {/* Admin cannot view details */}
+              {user?.role !== "admin" && (
+                <Link to={`/events/${event._id}`}>
+                  View Details
+                </Link>
+              )}
             </div>
           ))}
         </div>

@@ -12,6 +12,7 @@ import OrganizerEvents from "../pages/OrganizerEvents";
 import CreateEvent from "../pages/CreateEvent";
 import EditEvent from "../pages/EditEvent";
 import EventRegistrations from "../pages/EventRegistrations";
+import ManageUsers from "../pages/ManageUsers";
 
 import ProtectedRoute from "./ProtectedRoute";
 
@@ -56,7 +57,7 @@ const AppRoutes = () => {
       <Route
         path="/events/:eventId"
         element={
-          <ProtectedRoute allowedRoles={["student","organizer"]}>
+          <ProtectedRoute allowedRoles={["student", "organizer"]}>
             <EventDetails />
           </ProtectedRoute>
         }
@@ -102,6 +103,15 @@ const AppRoutes = () => {
         element={
           <ProtectedRoute allowedRoles={["organizer", "admin"]}>
             <EventRegistrations />
+          </ProtectedRoute>
+        }
+      />
+
+      <Route
+        path="/admin/users"
+        element={
+          <ProtectedRoute allowedRoles={["admin"]}>
+            <ManageUsers />
           </ProtectedRoute>
         }
       />

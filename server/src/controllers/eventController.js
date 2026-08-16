@@ -162,8 +162,10 @@ const getEventById = async (req, res) => {
   try {
     const { id } = req.params;
 
-    const event = await Event.findById(id)
-      .populate("organizer", "name email profileImage");
+    const event = await Event.findById(id).populate(
+      "organizer",
+      "name email profileImage",
+    );
 
     if (!event) {
       return res.status(404).json({

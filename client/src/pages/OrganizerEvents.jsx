@@ -16,10 +16,7 @@ const OrganizerEvents = () => {
       } catch (error) {
         console.error("Fetch My Events Error:", error);
 
-        setError(
-          error.response?.data?.message ||
-            "Failed to load your events"
-        );
+        setError(error.response?.data?.message || "Failed to load your events");
       } finally {
         setLoading(false);
       }
@@ -29,28 +26,25 @@ const OrganizerEvents = () => {
   }, []);
 
   const handleDelete = async (eventId) => {
-  const confirmed = window.confirm(
-    "Are you sure you want to delete this event?"
-  );
-
-  if (!confirmed) return;
-
-  try {
-    await api.delete(`/events/${eventId}`);
-
-    // Remove deleted event from UI
-    setEvents((prevEvents) =>
-      prevEvents.filter((event) => event._id !== eventId)
+    const confirmed = window.confirm(
+      "Are you sure you want to delete this event?",
     );
-  } catch (error) {
-    console.error("Delete Event Error:", error);
 
-    alert(
-      error.response?.data?.message ||
-        "Failed to delete event"
-    );
-  }
-};
+    if (!confirmed) return;
+
+    try {
+      await api.delete(`/events/${eventId}`);
+
+      // Remove deleted event from UI
+      setEvents((prevEvents) =>
+        prevEvents.filter((event) => event._id !== eventId),
+      );
+    } catch (error) {
+      console.error("Delete Event Error:", error);
+
+      alert(error.response?.data?.message || "Failed to delete event");
+    }
+  };
 
   if (loading) {
     return <h2>Loading your events...</h2>;
@@ -68,7 +62,6 @@ const OrganizerEvents = () => {
         <button>Create Event</button>
       </Link>
 
-
       {events.length === 0 ? (
         <p>You have not created any events yet.</p>
       ) : (
@@ -79,31 +72,19 @@ const OrganizerEvents = () => {
 
               <p>{event.description}</p>
 
-              <p>
-                Category: {event.category}
-              </p>
+              <p>Category: {event.category}</p>
 
-              <p>
-                Venue: {event.venue}
-              </p>
+              <p>Venue: {event.venue}</p>
 
-              <p>
-                Date:{" "}
-                {new Date(
-                  event.eventDate
-                ).toLocaleDateString()}
-              </p>
+              <p>Date: {new Date(event.eventDate).toLocaleDateString()}</p>
               <Link to={`/organizer/events/${event._id}/edit`}>
                 <button>Edit</button>
-            </Link>
+              </Link>
 
-            <button onClick={() => handleDelete(event._id)}>Delete</button>
+              <button onClick={() => handleDelete(event._id)}>Delete</button>
 
-
-              <Link
-                to={`/organizer/events/${event._id}/registrations`}
-              >
-               <button>View Registrations</button>
+              <Link to={`/organizer/events/${event._id}/registrations`}>
+                <button>View Registrations</button>
               </Link>
             </div>
           ))}

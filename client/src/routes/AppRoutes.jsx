@@ -1,8 +1,4 @@
-import {
-  Routes,
-  Route,
-  Navigate,
-} from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 
 import Login from "../pages/Login";
 import Register from "../pages/Register";
@@ -53,69 +49,62 @@ const AppRoutes = () => {
         }
       />
 
+      <Route path="/unauthorized" element={<Unauthorized />} />
+
+      <Route path="/" element={<Navigate to="/login" replace />} />
+
       <Route
-        path="/unauthorized"
-        element={<Unauthorized />}
+        path="/events/:eventId"
+        element={
+          <ProtectedRoute allowedRoles={["student"]}>
+            <EventDetails />
+          </ProtectedRoute>
+        }
       />
 
       <Route
-        path="/"
-        element={<Navigate to="/login" replace />}
+        path="/my-registrations"
+        element={
+          <ProtectedRoute allowedRoles={["student"]}>
+            <MyRegistrations />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/organizer/events"
+        element={
+          <ProtectedRoute allowedRoles={["organizer", "admin"]}>
+            <OrganizerEvents />
+          </ProtectedRoute>
+        }
       />
 
       <Route
-  path="/events/:eventId"
-  element={
-    <ProtectedRoute allowedRoles={["student"]}>
-      <EventDetails />
-    </ProtectedRoute>
-  }
-/>
+        path="/organizer/events/create"
+        element={
+          <ProtectedRoute allowedRoles={["organizer", "admin"]}>
+            <CreateEvent />
+          </ProtectedRoute>
+        }
+      />
 
-<Route
-  path="/my-registrations"
-  element={
-    <ProtectedRoute allowedRoles={["student"]}>
-      <MyRegistrations />
-    </ProtectedRoute>
-  }
-/>
-<Route
-  path="/organizer/events"
-  element={
-    <ProtectedRoute allowedRoles={["organizer", "admin"]}>
-      <OrganizerEvents />
-    </ProtectedRoute>
-  }
-/>
+      <Route
+        path="/organizer/events/:eventId/edit"
+        element={
+          <ProtectedRoute allowedRoles={["organizer", "admin"]}>
+            <EditEvent />
+          </ProtectedRoute>
+        }
+      />
 
-<Route
-  path="/organizer/events/create"
-  element={
-    <ProtectedRoute allowedRoles={["organizer", "admin"]}>
-      <CreateEvent />
-    </ProtectedRoute>
-  }
-/>
-
-<Route
-  path="/organizer/events/:eventId/edit"
-  element={
-    <ProtectedRoute allowedRoles={["organizer", "admin"]}>
-      <EditEvent />
-    </ProtectedRoute>
-  }
-/>
-
-<Route
-  path="/organizer/events/:eventId/registrations"
-  element={
-    <ProtectedRoute allowedRoles={["organizer", "admin"]}>
-      <EventRegistrations />
-    </ProtectedRoute>
-  }
-/>
-
+      <Route
+        path="/organizer/events/:eventId/registrations"
+        element={
+          <ProtectedRoute allowedRoles={["organizer", "admin"]}>
+            <EventRegistrations />
+          </ProtectedRoute>
+        }
+      />
     </Routes>
   );
 };

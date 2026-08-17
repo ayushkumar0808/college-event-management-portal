@@ -18,56 +18,41 @@ const Navbar = () => {
 
   const isActive = (path) => {
     return (
-      location.pathname === path ||
-      location.pathname.startsWith(`${path}/`)
+      location.pathname === path || location.pathname.startsWith(`${path}/`)
     );
   };
 
   return (
     <nav className="premium-navbar">
       <div className="navbar-container">
-
         {/* Logo */}
         <Link to="/" className="navbar-brand">
-          <div className="brand-icon">
-            CE
-          </div>
+          <div className="brand-icon">CE</div>
 
           <div className="brand-text">
-            <span className="brand-title">
-              College Events
-            </span>
+            <span className="brand-title">College Events</span>
 
-            <span className="brand-subtitle">
-              Event Management
-            </span>
+            <span className="brand-subtitle">Event Management</span>
           </div>
         </Link>
 
-
         {/* Navigation */}
         <div className="navbar-links">
-
           {/* Events - Everyone */}
           <Link
             to="/events"
-            className={`navbar-link ${
-              isActive("/events") ? "active" : ""
-            }`}
+            className={`navbar-link ${isActive("/events") ? "active" : ""}`}
           >
             <span className="nav-icon">◈</span>
             Events
           </Link>
-
 
           {/* Student */}
           {user.role === "student" && (
             <Link
               to="/my-registrations"
               className={`navbar-link ${
-                isActive("/my-registrations")
-                  ? "active"
-                  : ""
+                isActive("/my-registrations") ? "active" : ""
               }`}
             >
               <span className="nav-icon">▣</span>
@@ -75,15 +60,12 @@ const Navbar = () => {
             </Link>
           )}
 
-
           {/* Organizer */}
           {user.role === "organizer" && (
             <Link
               to="/organizer"
               className={`navbar-link ${
-                isActive("/organizer")
-                  ? "active"
-                  : ""
+                isActive("/organizer") ? "active" : ""
               }`}
             >
               <span className="nav-icon">◆</span>
@@ -91,15 +73,13 @@ const Navbar = () => {
             </Link>
           )}
 
-
           {/* Admin */}
           {user.role === "admin" && (
             <>
               <Link
                 to="/admin"
                 className={`navbar-link ${
-                  isActive("/admin") &&
-                  !isActive("/admin/users")
+                  isActive("/admin") && !isActive("/admin/users")
                     ? "active"
                     : ""
                 }`}
@@ -111,52 +91,43 @@ const Navbar = () => {
               <Link
                 to="/admin/users"
                 className={`navbar-link ${
-                  isActive("/admin/users")
-                    ? "active"
-                    : ""
+                  isActive("/admin/users") ? "active" : ""
                 }`}
               >
                 <span className="nav-icon">♙</span>
                 Manage Users
               </Link>
+
+              <Link
+                to="/admin/events"
+                className={`navbar-link ${
+                  isActive("/admin/events") ? "active" : ""
+                }`}
+              >
+                <span className="nav-icon">♙</span>
+                Manage Events
+              </Link>
             </>
           )}
-
         </div>
-
 
         {/* User Section */}
         <div className="navbar-user">
-
           <div className="user-profile">
-
             <div className="user-avatar">
               {user.profileImage ? (
-                <img
-                  src={user.profileImage}
-                  alt={user.name}
-                />
+                <img src={user.profileImage} alt={user.name} />
               ) : (
                 user.name?.charAt(0).toUpperCase()
               )}
             </div>
 
             <div className="user-info">
+              <span className="user-name">{user.name}</span>
 
-              <span className="user-name">
-                {user.name}
-              </span>
-
-              <span
-                className={`user-role role-${user.role}`}
-              >
-                {user.role}
-              </span>
-
+              <span className={`user-role role-${user.role}`}>{user.role}</span>
             </div>
-
           </div>
-
 
           {/* Logout */}
           <button
@@ -166,15 +137,29 @@ const Navbar = () => {
           >
             <span>↪</span>
           </button>
-
         </div>
-
       </div>
     </nav>
   );
 };
 
 export default Navbar;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

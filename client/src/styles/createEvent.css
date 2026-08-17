@@ -4,7 +4,6 @@
   padding: 35px 0 80px;
 }
 
-
 /* HEADER */
 
 .create-event-header {
@@ -70,20 +69,17 @@
   transform: translateY(-1px);
 }
 
-
 /* LAYOUT */
 
 .create-event-layout {
   display: grid;
 
-  grid-template-columns:
-    minmax(0, 1fr) 290px;
+  grid-template-columns: minmax(0, 1fr) 290px;
 
   align-items: start;
 
   gap: 18px;
 }
-
 
 /* FORM */
 
@@ -94,8 +90,7 @@
 
   background: white;
 
-  box-shadow:
-    0 8px 30px rgba(15,23,42,0.04);
+  box-shadow: 0 8px 30px rgba(15, 23, 42, 0.04);
 
   overflow: hidden;
 }
@@ -155,7 +150,6 @@
 
   font-size: 8px;
 }
-
 
 /* FORM GROUP */
 
@@ -244,8 +238,7 @@
 
   background: white;
 
-  box-shadow:
-    0 0 0 3px rgba(99,102,241,0.08);
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.08);
 }
 
 .form-group small {
@@ -255,7 +248,6 @@
 
   font-size: 7px;
 }
-
 
 /* MESSAGES */
 
@@ -312,7 +304,6 @@
   color: #059669;
 }
 
-
 /* SUBMIT */
 
 .create-event-submit {
@@ -362,8 +353,7 @@
 
   color: white;
 
-  box-shadow:
-    0 7px 18px rgba(79,70,229,0.18);
+  box-shadow: 0 7px 18px rgba(79, 70, 229, 0.18);
 }
 
 .submit-event-btn:hover:not(:disabled) {
@@ -379,7 +369,6 @@
 .submit-event-btn span {
   font-size: 14px;
 }
-
 
 /* SIDEBAR */
 
@@ -404,17 +393,12 @@
   background:
     radial-gradient(
       circle at 90% 10%,
-      rgba(129,140,248,0.35),
+      rgba(129, 140, 248, 0.35),
       transparent 35%
     ),
-    linear-gradient(
-      145deg,
-      #111827,
-      #312e81
-    );
+    linear-gradient(145deg, #111827, #312e81);
 
-  box-shadow:
-    0 18px 45px rgba(49,46,129,0.2);
+  box-shadow: 0 18px 45px rgba(49, 46, 129, 0.2);
 }
 
 .sidebar-preview::after {
@@ -428,7 +412,7 @@
   right: -90px;
   bottom: -90px;
 
-  border: 1px solid rgba(255,255,255,0.1);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 
   border-radius: 50%;
 }
@@ -454,7 +438,7 @@
 
   border-radius: 13px;
 
-  background: rgba(255,255,255,0.1);
+  background: rgba(255, 255, 255, 0.1);
 
   color: #c4b5fd;
 
@@ -480,7 +464,6 @@
 
   line-height: 1.7;
 }
-
 
 /* TIPS */
 
@@ -527,14 +510,13 @@
   line-height: 1.5;
 }
 
-
 /* LOADING */
 
 .button-spinner {
   width: 11px;
   height: 11px;
 
-  border: 2px solid rgba(255,255,255,0.35);
+  border: 2px solid rgba(255, 255, 255, 0.35);
   border-top-color: white;
 
   border-radius: 50%;
@@ -548,11 +530,9 @@
   }
 }
 
-
 /* RESPONSIVE */
 
 @media (max-width: 900px) {
-
   .create-event-layout {
     grid-template-columns: 1fr;
   }
@@ -562,11 +542,9 @@
 
     grid-template-columns: 1fr 1fr;
   }
-
 }
 
 @media (max-width: 650px) {
-
   .create-event-page {
     width: 94%;
     padding-top: 20px;
@@ -608,5 +586,118 @@
   .submit-event-btn {
     flex: 1;
   }
+}
 
+/* EDIT EVENT LOADING */
+
+.event-loading-card {
+  min-height: 420px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid #e2e8f0;
+  border-radius: 18px;
+
+  background: white;
+
+  box-shadow: 0 8px 30px rgba(15, 23, 42, 0.04);
+}
+
+.event-loading-card h2 {
+  margin: 15px 0 4px;
+
+  color: #334155;
+
+  font-size: 17px;
+}
+
+.event-loading-card p {
+  color: #94a3b8;
+
+  font-size: 9px;
+}
+
+.page-spinner {
+  width: 30px;
+  height: 30px;
+
+  border: 3px solid #e0e7ff;
+  border-top-color: #4f46e5;
+
+  border-radius: 50%;
+
+  animation: createSpin 0.7s linear infinite;
+}
+
+/* ERROR CARD */
+
+.event-error-card {
+  min-height: 350px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+
+  border: 1px solid #e2e8f0;
+  border-radius: 18px;
+
+  background: white;
+
+  box-shadow: 0 8px 30px rgba(15, 23, 42, 0.04);
+}
+
+.error-icon {
+  width: 42px;
+  height: 42px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: #fef2f2;
+
+  color: #dc2626;
+
+  font-size: 17px;
+  font-weight: 900;
+}
+
+.event-error-card h2 {
+  margin: 15px 0 5px;
+
+  color: #334155;
+
+  font-size: 18px;
+}
+
+.event-error-card p {
+  margin-bottom: 18px;
+
+  color: #94a3b8;
+
+  font-size: 9px;
+}
+
+.event-error-card button {
+  padding: 9px 14px;
+
+  border: none;
+  border-radius: 8px;
+
+  background: #4f46e5;
+
+  color: white;
+
+  font-size: 9px;
+  font-weight: 800;
+
+  cursor: pointer;
 }

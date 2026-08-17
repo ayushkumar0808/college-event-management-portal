@@ -1,0 +1,797 @@
+/* =========================================
+   EVENT REGISTRATIONS
+========================================= */
+
+.event-registrations-page {
+  width: min(1200px, 92%);
+  margin: 0 auto;
+
+  padding: 38px 0 80px;
+}
+
+/* =========================================
+   BACK
+========================================= */
+
+.registrations-back {
+  display: inline-flex;
+  align-items: center;
+
+  gap: 8px;
+
+  margin-bottom: 28px;
+
+  color: #64748b;
+
+  font-size: 12px;
+  font-weight: 750;
+
+  text-decoration: none;
+
+  transition: color 0.2s ease;
+}
+
+.registrations-back:hover {
+  color: #4f46e5;
+}
+
+.registrations-back span {
+  font-size: 18px;
+}
+
+/* =========================================
+   HEADER
+========================================= */
+
+.registrations-page-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+
+  gap: 30px;
+
+  margin-bottom: 32px;
+}
+
+.header-main {
+  min-width: 0;
+}
+
+.header-eyebrow {
+  color: #6366f1;
+
+  font-size: 9px;
+  font-weight: 850;
+
+  letter-spacing: 1.5px;
+}
+
+.header-main h1 {
+  max-width: 750px;
+
+  margin: 8px 0;
+
+  color: #0f172a;
+
+  font-size: clamp(34px, 5vw, 48px);
+
+  line-height: 1.05;
+
+  letter-spacing: -2px;
+
+  font-weight: 850;
+}
+
+.header-main p {
+  color: #64748b;
+
+  font-size: 13px;
+}
+
+/* =========================================
+   CAPACITY
+========================================= */
+
+.capacity-badge {
+  min-width: 105px;
+
+  padding: 14px 17px;
+
+  border: 1px solid #e2e8f0;
+
+  border-radius: 13px;
+
+  background: white;
+
+  box-shadow: 0 5px 20px rgba(15, 23, 42, 0.04);
+}
+
+.capacity-badge span {
+  display: block;
+
+  color: #94a3b8;
+
+  font-size: 8px;
+  font-weight: 850;
+
+  letter-spacing: 1px;
+}
+
+.capacity-badge strong {
+  display: block;
+
+  margin-top: 3px;
+
+  color: #0f172a;
+
+  font-size: 24px;
+  font-weight: 850;
+}
+
+.capacity-badge small {
+  color: #94a3b8;
+
+  font-size: 12px;
+}
+
+/* =========================================
+   STATS
+========================================= */
+
+.attendance-stats {
+  display: grid;
+
+  grid-template-columns: repeat(4, 1fr);
+
+  gap: 14px;
+
+  margin-bottom: 42px;
+}
+
+.attendance-stat {
+  display: flex;
+  align-items: center;
+
+  gap: 13px;
+
+  padding: 17px;
+
+  border: 1px solid #e2e8f0;
+
+  border-radius: 14px;
+
+  background: white;
+
+  box-shadow: 0 4px 20px rgba(15, 23, 42, 0.035);
+}
+
+.stat-symbol {
+  width: 41px;
+  height: 41px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  border-radius: 11px;
+
+  font-size: 17px;
+  font-weight: 850;
+}
+
+.total-symbol {
+  color: #4f46e5;
+  background: #eef2ff;
+}
+
+.present-symbol {
+  color: #059669;
+  background: #ecfdf5;
+}
+
+.absent-symbol {
+  color: #dc2626;
+  background: #fef2f2;
+}
+
+.pending-symbol {
+  color: #d97706;
+  background: #fffbeb;
+}
+
+.attendance-stat div:last-child {
+  display: flex;
+  flex-direction: column;
+}
+
+.attendance-stat span {
+  color: #94a3b8;
+
+  font-size: 9px;
+  font-weight: 750;
+
+  text-transform: uppercase;
+
+  letter-spacing: 0.4px;
+}
+
+.attendance-stat strong {
+  margin-top: 2px;
+
+  color: #0f172a;
+
+  font-size: 21px;
+  font-weight: 850;
+}
+
+/* =========================================
+   STUDENTS SECTION
+========================================= */
+
+.students-section {
+  padding: 25px;
+
+  border: 1px solid #e2e8f0;
+
+  border-radius: 18px;
+
+  background: white;
+
+  box-shadow: 0 8px 30px rgba(15, 23, 42, 0.045);
+}
+
+.students-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 20px;
+
+  margin-bottom: 22px;
+}
+
+.students-toolbar h2 {
+  margin: 0;
+
+  color: #0f172a;
+
+  font-size: 20px;
+  font-weight: 850;
+}
+
+.students-toolbar p {
+  margin-top: 4px;
+
+  color: #94a3b8;
+
+  font-size: 11px;
+}
+
+/* =========================================
+   SEARCH
+========================================= */
+
+.student-search {
+  width: 245px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 8px;
+
+  padding: 9px 11px;
+
+  border: 1px solid #e2e8f0;
+
+  border-radius: 9px;
+
+  background: #f8fafc;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.student-search:focus-within {
+  border-color: #a5b4fc;
+
+  background: white;
+
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.08);
+}
+
+.student-search > span {
+  color: #94a3b8;
+
+  font-size: 17px;
+}
+
+.student-search input {
+  width: 100%;
+
+  border: none;
+  outline: none;
+
+  background: transparent;
+
+  color: #334155;
+
+  font-size: 11px;
+}
+
+.student-search input::placeholder {
+  color: #94a3b8;
+}
+
+.student-search button {
+  border: none;
+
+  background: transparent;
+
+  color: #94a3b8;
+
+  font-size: 17px;
+
+  cursor: pointer;
+}
+
+/* =========================================
+   TABLE
+========================================= */
+
+.students-table-wrapper {
+  overflow-x: auto;
+
+  border: 1px solid #eef2f7;
+
+  border-radius: 13px;
+}
+
+.students-table {
+  width: 100%;
+
+  border-collapse: collapse;
+
+  min-width: 850px;
+}
+
+.students-table thead {
+  background: #f8fafc;
+}
+
+.students-table th {
+  padding: 13px 15px;
+
+  color: #94a3b8;
+
+  font-size: 8px;
+  font-weight: 850;
+
+  letter-spacing: 0.8px;
+
+  text-align: left;
+
+  white-space: nowrap;
+}
+
+.students-table td {
+  padding: 15px;
+
+  border-top: 1px solid #eef2f7;
+
+  vertical-align: middle;
+}
+
+.students-table tbody tr {
+  transition: background 0.15s ease;
+}
+
+.students-table tbody tr:hover {
+  background: #fafbff;
+}
+
+/* =========================================
+   STUDENT
+========================================= */
+
+.student-info {
+  display: flex;
+  align-items: center;
+
+  gap: 11px;
+}
+
+.student-avatar {
+  width: 37px;
+  height: 37px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  border-radius: 10px;
+
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+
+  color: white;
+
+  font-size: 13px;
+  font-weight: 850;
+}
+
+.student-info div:last-child {
+  display: flex;
+  flex-direction: column;
+}
+
+.student-info strong {
+  color: #334155;
+
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.student-info span {
+  margin-top: 3px;
+
+  color: #94a3b8;
+
+  font-size: 8px;
+}
+
+/* =========================================
+   CONTACT
+========================================= */
+
+.contact-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.contact-info span {
+  color: #475569;
+
+  font-size: 10px;
+}
+
+.contact-info small {
+  margin-top: 3px;
+
+  color: #94a3b8;
+
+  font-size: 9px;
+}
+
+/* =========================================
+   STATUS
+========================================= */
+
+.registered-status {
+  display: inline-flex;
+  align-items: center;
+
+  gap: 6px;
+
+  padding: 5px 8px;
+
+  border-radius: 999px;
+
+  background: #ecfdf5;
+
+  color: #059669;
+
+  font-size: 9px;
+  font-weight: 800;
+
+  text-transform: capitalize;
+}
+
+.registered-status span {
+  width: 5px;
+  height: 5px;
+
+  border-radius: 50%;
+
+  background: currentColor;
+}
+
+/* =========================================
+   ATTENDANCE BADGE
+========================================= */
+
+.attendance-badge {
+  display: inline-block;
+
+  min-width: 70px;
+
+  padding: 6px 8px;
+
+  border-radius: 7px;
+
+  font-size: 9px;
+  font-weight: 800;
+
+  text-align: center;
+}
+
+.attendance-badge.present {
+  color: #047857;
+  background: #ecfdf5;
+}
+
+.attendance-badge.absent {
+  color: #dc2626;
+  background: #fef2f2;
+}
+
+.attendance-badge.not-marked {
+  color: #b45309;
+  background: #fffbeb;
+}
+
+/* =========================================
+   ACTIONS
+========================================= */
+
+.attendance-actions {
+  display: flex;
+
+  gap: 7px;
+}
+
+.attendance-actions button {
+  padding: 7px 9px;
+
+  border-radius: 7px;
+
+  font-size: 9px;
+  font-weight: 800;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.15s ease,
+    opacity 0.15s ease;
+}
+
+.attendance-actions button:hover:not(:disabled) {
+  transform: translateY(-1px);
+}
+
+.attendance-actions button:disabled {
+  cursor: not-allowed;
+
+  opacity: 0.5;
+}
+
+.present-btn {
+  border: 1px solid #bbf7d0;
+
+  background: #f0fdf4;
+
+  color: #15803d;
+}
+
+.present-btn.selected {
+  border-color: #22c55e;
+
+  background: #dcfce7;
+}
+
+.absent-btn {
+  border: 1px solid #fecaca;
+
+  background: #fef2f2;
+
+  color: #dc2626;
+}
+
+.absent-btn.selected {
+  border-color: #ef4444;
+
+  background: #fee2e2;
+}
+
+/* =========================================
+   EMPTY
+========================================= */
+
+.no-students {
+  padding: 70px 20px;
+
+  border: 1px dashed #cbd5e1;
+
+  border-radius: 13px;
+
+  background: #f8fafc;
+
+  text-align: center;
+}
+
+.no-students-icon {
+  width: 52px;
+  height: 52px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin: 0 auto 14px;
+
+  border-radius: 14px;
+
+  background: #eef2ff;
+
+  color: #6366f1;
+
+  font-size: 22px;
+}
+
+.no-students h2 {
+  margin: 0 0 6px;
+
+  color: #0f172a;
+
+  font-size: 18px;
+  font-weight: 800;
+}
+
+.no-students p {
+  color: #94a3b8;
+
+  font-size: 11px;
+}
+
+/* =========================================
+   LOADING
+========================================= */
+
+.registrations-loading {
+  min-height: 500px;
+
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 13px;
+
+  color: #64748b;
+
+  font-size: 12px;
+}
+
+.registrations-spinner {
+  width: 38px;
+  height: 38px;
+
+  border: 3px solid #e2e8f0;
+
+  border-top-color: #6366f1;
+
+  border-radius: 50%;
+
+  animation: registrationsSpin 0.8s linear infinite;
+}
+
+@keyframes registrationsSpin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* =========================================
+   ERROR
+========================================= */
+
+.registrations-error {
+  min-height: 450px;
+
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+}
+
+.registrations-error-icon {
+  width: 50px;
+  height: 50px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-bottom: 15px;
+
+  border-radius: 50%;
+
+  background: #fee2e2;
+
+  color: #dc2626;
+
+  font-size: 22px;
+  font-weight: 850;
+}
+
+.registrations-error h2 {
+  margin: 0 0 7px;
+
+  color: #0f172a;
+}
+
+.registrations-error p {
+  margin-bottom: 18px;
+
+  color: #64748b;
+
+  font-size: 12px;
+}
+
+.back-organizer-btn {
+  padding: 10px 15px;
+
+  border-radius: 9px;
+
+  background: #6366f1;
+
+  color: white;
+
+  font-size: 11px;
+  font-weight: 750;
+
+  text-decoration: none;
+}
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 900px) {
+  .attendance-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 650px) {
+  .event-registrations-page {
+    padding: 28px 0 55px;
+  }
+
+  .registrations-page-header {
+    flex-direction: column;
+
+    align-items: flex-start;
+  }
+
+  .capacity-badge {
+    width: 100%;
+
+    box-sizing: border-box;
+  }
+
+  .attendance-stats {
+    grid-template-columns: 1fr;
+  }
+
+  .students-section {
+    padding: 17px;
+  }
+
+  .students-toolbar {
+    flex-direction: column;
+
+    align-items: stretch;
+  }
+
+  .student-search {
+    width: auto;
+  }
+}

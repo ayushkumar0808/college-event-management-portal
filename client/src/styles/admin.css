@@ -171,9 +171,7 @@
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6);
 }
 
-/* This directly beats the global ".stat-card p { font-size:30px; color: var(--primary); }"
-   rule from common.css because ".admin-dashboard .stat-card strong/p" has higher
-   specificity (0-0-3 vs 0-0-2), regardless of stylesheet load order. */
+
 .admin-dashboard .stat-card strong {
   display: block;
   margin: 18px 0 0;

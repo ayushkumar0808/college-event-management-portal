@@ -17,8 +17,10 @@ const Navbar = () => {
   };
 
   const isActive = (path) => {
-    return location.pathname === path ||
-      location.pathname.startsWith(`${path}/`);
+    return (
+      location.pathname === path ||
+      location.pathname.startsWith(`${path}/`)
+    );
   };
 
   return (
@@ -42,9 +44,11 @@ const Navbar = () => {
           </div>
         </Link>
 
+
         {/* Navigation */}
         <div className="navbar-links">
 
+          {/* Events - Everyone */}
           <Link
             to="/events"
             className={`navbar-link ${
@@ -55,6 +59,8 @@ const Navbar = () => {
             Events
           </Link>
 
+
+          {/* Student */}
           {user.role === "student" && (
             <Link
               to="/my-registrations"
@@ -69,6 +75,8 @@ const Navbar = () => {
             </Link>
           )}
 
+
+          {/* Organizer */}
           {user.role === "organizer" && (
             <Link
               to="/organizer"
@@ -83,25 +91,45 @@ const Navbar = () => {
             </Link>
           )}
 
+
+          {/* Admin */}
           {user.role === "admin" && (
-            <Link
-              to="/admin"
-              className={`navbar-link ${
-                isActive("/admin")
-                  ? "active"
-                  : ""
-              }`}
-            >
-              <span className="nav-icon">◆</span>
-              Admin
-            </Link>
+            <>
+              <Link
+                to="/admin"
+                className={`navbar-link ${
+                  isActive("/admin") &&
+                  !isActive("/admin/users")
+                    ? "active"
+                    : ""
+                }`}
+              >
+                <span className="nav-icon">◆</span>
+                Admin
+              </Link>
+
+              <Link
+                to="/admin/users"
+                className={`navbar-link ${
+                  isActive("/admin/users")
+                    ? "active"
+                    : ""
+                }`}
+              >
+                <span className="nav-icon">♙</span>
+                Manage Users
+              </Link>
+            </>
           )}
+
         </div>
+
 
         {/* User Section */}
         <div className="navbar-user">
 
           <div className="user-profile">
+
             <div className="user-avatar">
               {user.profileImage ? (
                 <img
@@ -114,6 +142,7 @@ const Navbar = () => {
             </div>
 
             <div className="user-info">
+
               <span className="user-name">
                 {user.name}
               </span>
@@ -123,9 +152,13 @@ const Navbar = () => {
               >
                 {user.role}
               </span>
+
             </div>
+
           </div>
 
+
+          {/* Logout */}
           <button
             className="logout-button"
             onClick={handleLogout}
@@ -142,3 +175,69 @@ const Navbar = () => {
 };
 
 export default Navbar;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// import { Link, useNavigate } from "react-router-dom";
+// import { useAuth } from "../context/AuthContext";
+
+// const Navbar = () => {
+//   const { user, logout } = useAuth();
+//   const navigate = useNavigate();
+
+//   if (!user) {
+//     return null;
+//   }
+
+//   const handleLogout = () => {
+//     logout();
+//     navigate("/login");
+//   };
+
+//   return (
+//     <nav>
+//       <div>
+//         <Link to="/">College Events</Link>
+//       </div>
+
+//       <div>
+//         <Link to="/events">Events</Link>
+
+//         {user.role === "student" && (
+//           <Link to="/my-registrations">My Registrations</Link>
+//         )}
+
+//         {user.role === "organizer" && (
+//           <Link to="/organizer">Organizer Dashboard</Link>
+//         )}
+
+//         {user.role === "admin" && (
+//           <>
+//             <Link to="/admin">Admin Dashboard</Link>
+
+//             <Link to="/admin/users">Manage Users</Link>
+//           </>
+//         )}
+//         <span>
+//           {user.name} ({user.role})
+//         </span>
+
+//         <button onClick={handleLogout}>Logout</button>
+//       </div>
+//     </nav>
+//   );
+// };
+
+// export default Navbar;

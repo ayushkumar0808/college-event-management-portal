@@ -148,7 +148,7 @@ const Register = () => {
                 name="email"
                 value={formData.email}
                 onChange={handleChange}
-                placeholder="you@example.com"
+                placeholder="ayush@example.com"
                 autoComplete="email"
                 required
               />

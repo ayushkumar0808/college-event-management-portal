@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import api from "../services/api";
 import { useAuth } from "../context/AuthContext";
-import "../styles/Events.css";
+import api from "../services/api";
+import "../styles/events.css";
 
 const Events = () => {
   const { user } = useAuth();
@@ -34,9 +34,10 @@ const Events = () => {
 
   if (loading) {
     return (
-      <main className="page">
-        <div className="empty-message">
-          Loading events...
+      <main className="events-page">
+        <div className="events-loading">
+          <div className="loading-spinner"></div>
+          <p>Loading events...</p>
         </div>
       </main>
     );
@@ -44,99 +45,187 @@ const Events = () => {
 
   if (error) {
     return (
-      <main className="page">
-        <div className="error-message">
-          {error}
+      <main className="events-page">
+        <div className="events-error">
+          <div className="error-icon">!</div>
+          <h2>Something went wrong</h2>
+          <p>{error}</p>
         </div>
       </main>
     );
   }
 
   return (
-    <main className="page">
-      <div className="page-header">
-        <div>
-          <p className="eyebrow">DISCOVER</p>
+    <main className="events-page">
 
-          <h1 className="page-title">
-            College Events
+      {/* ================= HEADER ================= */}
+
+      <section className="events-header">
+
+        <div>
+          <span className="events-eyebrow">
+            CAMPUS EVENTS
+          </span>
+
+          <h1>
+            Discover what's
+            <span> happening.</span>
           </h1>
 
-          <p className="page-subtitle">
-            Explore upcoming events, workshops and
-            activities happening at your college.
+          <p>
+            Explore upcoming events, workshops,
+            competitions and activities happening
+            across your college.
           </p>
         </div>
 
-        <div className="event-count">
-          {events.length}{" "}
-          {events.length === 1 ? "Event" : "Events"}
+        <div className="events-count-card">
+          <span>{events.length}</span>
+          <small>
+            {events.length === 1
+              ? "Event Available"
+              : "Events Available"}
+          </small>
         </div>
-      </div>
+
+      </section>
+
+
+      {/* ================= EVENTS ================= */}
 
       {events.length === 0 ? (
-        <div className="empty-message">
+        <section className="events-empty">
+
+          <div className="empty-icon">
+            ◇
+          </div>
+
           <h2>No events available</h2>
+
           <p>
             There are currently no published events.
+            Check back later for new events.
           </p>
-        </div>
+
+        </section>
       ) : (
-        <div className="events-grid">
+        <section className="events-grid">
+
           {events.map((event) => (
+
             <article
-              className="event-card"
+              className="premium-event-card"
               key={event._id}
             >
-              <div className="event-card-top">
-                <span className="category">
+
+              {/* Card Header */}
+
+              <div className="event-card-header">
+
+                <span className="event-category">
                   {event.category}
                 </span>
 
-                <span className="event-status">
+                <span className="event-published">
+                  <span></span>
                   Published
                 </span>
+
               </div>
 
-              <h2>{event.title}</h2>
+
+              {/* Title */}
+
+              <h2 className="event-title">
+                {event.title}
+              </h2>
+
+
+              {/* Description */}
 
               <p className="event-description">
                 {event.description}
               </p>
 
-              <div className="event-info">
-                <div>
-                  <span className="info-label">
-                    📍 Venue
-                  </span>
-                  <strong>{event.venue}</strong>
+
+              {/* Event Details */}
+
+              <div className="event-details">
+
+                <div className="event-detail">
+
+                  <div className="detail-icon">
+                    📅
+                  </div>
+
+                  <div>
+                    <span>Date</span>
+
+                    <strong>
+                      {new Date(
+                        event.eventDate
+                      ).toLocaleDateString(
+                        "en-IN",
+                        {
+                          day: "numeric",
+                          month: "short",
+                          year: "numeric",
+                        }
+                      )}
+                    </strong>
+                  </div>
+
                 </div>
 
-                <div>
-                  <span className="info-label">
-                    📅 Date
-                  </span>
-                  <strong>
-                    {new Date(
-                      event.eventDate
-                    ).toLocaleDateString()}
-                  </strong>
+
+                <div className="event-detail">
+
+                  <div className="detail-icon">
+                    📍
+                  </div>
+
+                  <div>
+                    <span>Venue</span>
+
+                    <strong>
+                      {event.venue}
+                    </strong>
+                  </div>
+
                 </div>
+
               </div>
 
-              {user?.role !== "admin" && (
-                <Link
-                  className="event-button"
-                  to={`/events/${event._id}`}
-                >
-                  View Details
-                  <span>→</span>
-                </Link>
-              )}
+
+              {/* Footer */}
+
+              <div className="event-card-footer">
+
+                {user?.role !== "admin" ? (
+                  <Link
+                    to={`/events/${event._id}`}
+                    className="view-event-btn"
+                  >
+                    <span>View Details</span>
+                    <span className="arrow">
+                      →
+                    </span>
+                  </Link>
+                ) : (
+                  <span className="admin-event-label">
+                    Admin View
+                  </span>
+                )}
+
+              </div>
+
             </article>
+
           ))}
-        </div>
+
+        </section>
       )}
+
     </main>
   );
 };

@@ -11,9 +11,8 @@ require("dotenv").config();
 connectDB();
 
 // Define Port
-const PORT = process.env.PORT ;
+const PORT = process.env.PORT || 5000;
 
-// Start Server
-app.listen(PORT, () => {
+app.listen(PORT, "0.0.0.0", () => {
   console.log(`Server is running on port ${PORT}`);
 });

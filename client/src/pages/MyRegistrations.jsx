@@ -172,12 +172,20 @@ const MyRegistrations = () => {
                   {/* Card Top */}
 
                   <div className="registration-card-top">
-                    <span className="event-category">
+                    <span className="registration-category">
                       {event?.category || "College Event"}
                     </span>
 
-                    <span className={`status-badge ${registration.status}`}>
-                      <span></span>
+                    <span
+                      className={`registration-status ${
+                        registration.status === "registered"
+                          ? "is-registered"
+                          : registration.status === "cancelled"
+                            ? "is-cancelled"
+                            : ""
+                      }`}
+                    >
+                      <span className="status-dot"></span>
                       {registration.status}
                     </span>
                   </div>
@@ -248,18 +256,6 @@ const MyRegistrations = () => {
 };
 
 export default MyRegistrations;
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

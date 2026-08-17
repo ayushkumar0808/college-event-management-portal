@@ -58,7 +58,7 @@ const AppRoutes = () => {
       <Route
         path="/events/:eventId"
         element={
-          <ProtectedRoute allowedRoles={["student", "organizer"]}>
+          <ProtectedRoute allowedRoles={["student", "organizer", "admin"]}>
             <EventDetails />
           </ProtectedRoute>
         }

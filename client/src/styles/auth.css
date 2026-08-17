@@ -514,3 +514,84 @@
     margin-top: 35px;
   }
 }
+
+/* REGISTER SUCCESS */
+
+.auth-success {
+  display: flex;
+  align-items: center;
+
+  gap: 8px;
+
+  margin-bottom: 18px;
+
+  padding: 10px 12px;
+
+  border: 1px solid #a7f3d0;
+
+  border-radius: 9px;
+
+  background: #ecfdf5;
+
+  color: #047857;
+
+  font-size: 9px;
+  font-weight: 700;
+}
+
+.auth-success span {
+  width: 19px;
+  height: 19px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: #d1fae5;
+
+  color: #059669;
+
+  font-weight: 900;
+}
+
+/* SELECT */
+
+.auth-select {
+  width: 100%;
+  height: 43px;
+
+  box-sizing: border-box;
+
+  padding: 0 12px;
+
+  border: 1px solid #e2e8f0;
+
+  border-radius: 9px;
+
+  outline: none;
+
+  background: #f8fafc;
+
+  color: #1e293b;
+
+  font-family: inherit;
+
+  font-size: 10px;
+
+  cursor: pointer;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
+}
+
+.auth-select:focus {
+  border-color: #818cf8;
+
+  background: white;
+
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.08);
+}

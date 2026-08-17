@@ -302,7 +302,6 @@
   line-height: 1.65;
 
   -webkit-line-clamp: 3;
-   line-clamp: 3;
   -webkit-box-orient: vertical;
 
   overflow: hidden;

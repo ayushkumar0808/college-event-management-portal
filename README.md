@@ -88,13 +88,13 @@ The platform allows students to discover and register for events, while organize
 ```text
 College Event Management Portal
 │
-├── Frontend
+├── client
 │   ├── React
 │   ├── React Router
 │   ├── Axios
 │   └── CSS
 │
-├── Backend
+├── server
 │   ├── Node.js
 │   ├── Express.js
 │   ├── Controllers
@@ -228,7 +228,7 @@ cd college-event-management-portal
 ### 2. Backend Setup
 
 ```bash
-cd backend
+cd server
 npm install
 ```
 
@@ -251,7 +251,7 @@ http://localhost:5000
 Open another terminal:
 
 ```bash
-cd frontend
+cd client
 npm install
 npm run dev
 ```
@@ -317,7 +317,7 @@ Security considerations implemented in the project include:
 ## 📂 Main Backend Structure
 
 ```text
-backend/
+server/
 │
 ├── controllers/
 ├── models/
@@ -334,7 +334,7 @@ backend/
 ## 📂 Main Frontend Structure
 
 ```text
-frontend/
+client/
 │
 ├── src/
 │   ├── components/

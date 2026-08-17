@@ -1,66 +1,106 @@
-/* =========================================
+/* =====================================================
    EVENTS PAGE
-========================================= */
+===================================================== */
 
 .events-page {
-  width: min(1200px, 92%);
+  width: min(1280px, 92%);
   margin: 0 auto;
-  padding: 60px 0 80px;
+  padding: 42px 0 90px;
 }
 
+/* =====================================================
+   HERO
+===================================================== */
 
-/* =========================================
-   HEADER
-========================================= */
+.events-hero {
+  position: relative;
+  min-height: 410px;
 
-.events-header {
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   justify-content: space-between;
 
-  gap: 40px;
+  padding: 60px 65px;
 
-  margin-bottom: 45px;
+  overflow: hidden;
+
+  border: 1px solid #e0e7ff;
+  border-radius: 30px;
+
+  background:
+    radial-gradient(
+      circle at 15% 20%,
+      rgba(99, 102, 241, 0.15),
+      transparent 35%
+    ),
+    radial-gradient(
+      circle at 85% 80%,
+      rgba(139, 92, 246, 0.14),
+      transparent 35%
+    ),
+    linear-gradient(135deg, #ffffff, #f8faff);
+
+  box-shadow: 0 25px 70px rgba(79, 70, 229, 0.08);
 }
 
-.events-eyebrow {
-  display: inline-block;
+.hero-content {
+  position: relative;
+  z-index: 2;
 
-  margin-bottom: 12px;
-
-  color: #6366f1;
-
-  font-size: 11px;
-  font-weight: 800;
-
-  letter-spacing: 2px;
-}
-
-.events-header h1 {
   max-width: 650px;
+}
 
-  margin: 0;
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+
+  padding: 8px 13px;
+
+  border: 1px solid #e0e7ff;
+  border-radius: 100px;
+
+  background: rgba(255, 255, 255, 0.75);
+
+  color: #4f46e5;
+
+  font-size: 10px;
+  font-weight: 850;
+
+  letter-spacing: 1.5px;
+
+  box-shadow: 0 8px 25px rgba(79, 70, 229, 0.07);
+}
+
+.live-dot {
+  width: 7px;
+  height: 7px;
+
+  border-radius: 50%;
+
+  background: #22c55e;
+
+  box-shadow: 0 0 0 4px #dcfce7;
+}
+
+.events-hero h1 {
+  margin: 20px 0 0;
 
   color: #0f172a;
 
-  font-size: clamp(38px, 5vw, 58px);
+  font-size: clamp(48px, 6vw, 76px);
 
-  line-height: 1.05;
+  line-height: 0.98;
 
-  letter-spacing: -2.5px;
+  letter-spacing: -4px;
 
-  font-weight: 850;
+  font-weight: 900;
 }
 
-.events-header h1 span {
+.events-hero h1 span {
   display: block;
 
-  background:
-    linear-gradient(
-      90deg,
-      #6366f1,
-      #8b5cf6
-    );
+  background: linear-gradient(90deg, #4f46e5, #7c3aed, #9333ea);
 
   -webkit-background-clip: text;
   background-clip: text;
@@ -68,236 +108,522 @@
   color: transparent;
 }
 
-.events-header p {
-  max-width: 570px;
+.events-hero p {
+  max-width: 590px;
 
-  margin-top: 18px;
+  margin: 23px 0 0;
 
   color: #64748b;
 
-  font-size: 16px;
+  font-size: 15px;
 
-  line-height: 1.7;
+  line-height: 1.8;
 }
 
+/* =====================================================
+   HERO STATS
+===================================================== */
 
-/* =========================================
-   EVENT COUNT
-========================================= */
+.hero-stats {
+  display: flex;
+  align-items: center;
 
-.events-count-card {
-  min-width: 145px;
+  gap: 25px;
 
-  padding: 20px 24px;
+  margin-top: 30px;
+}
+
+.hero-stat {
+  display: flex;
+  flex-direction: column;
+
+  gap: 4px;
+}
+
+.hero-stat strong {
+  color: #0f172a;
+
+  font-size: 18px;
+  font-weight: 850;
+}
+
+.hero-stat span {
+  color: #94a3b8;
+
+  font-size: 11px;
+  font-weight: 650;
+}
+
+.stat-divider {
+  width: 1px;
+  height: 35px;
+
+  background: #e2e8f0;
+}
+
+/* =====================================================
+   HERO VISUAL
+===================================================== */
+
+.hero-visual {
+  position: relative;
+
+  width: 330px;
+  height: 300px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-orb {
+  width: 190px;
+  height: 190px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: linear-gradient(135deg, #6366f1, #8b5cf6, #a855f7);
+
+  box-shadow: 0 30px 80px rgba(99, 102, 241, 0.3);
+
+  animation: floatingOrb 5s ease-in-out infinite;
+}
+
+.orb-inner {
+  width: 145px;
+  height: 145px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid rgba(255, 255, 255, 0.3);
+
+  border-radius: 50%;
+
+  background: rgba(255, 255, 255, 0.12);
+
+  backdrop-filter: blur(10px);
+}
+
+.orb-inner span {
+  color: white;
+
+  font-size: 45px;
+  font-weight: 900;
+
+  letter-spacing: -3px;
+}
+
+@keyframes floatingOrb {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+/* =====================================================
+   FLOATING CARDS
+===================================================== */
+
+.floating-card {
+  position: absolute;
+
+  z-index: 3;
+
+  display: flex;
+  align-items: center;
+
+  gap: 10px;
+
+  padding: 12px 15px;
+
+  border: 1px solid rgba(255, 255, 255, 0.8);
+
+  border-radius: 13px;
+
+  background: rgba(255, 255, 255, 0.82);
+
+  backdrop-filter: blur(15px);
+
+  box-shadow: 0 15px 35px rgba(15, 23, 42, 0.1);
+}
+
+.floating-card > span {
+  width: 32px;
+  height: 32px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 9px;
+
+  background: #eef2ff;
+
+  color: #6366f1;
+}
+
+.floating-card div {
+  display: flex;
+  flex-direction: column;
+
+  gap: 2px;
+}
+
+.floating-card strong {
+  color: #0f172a;
+
+  font-size: 11px;
+}
+
+.floating-card small {
+  color: #94a3b8;
+
+  font-size: 9px;
+}
+
+.floating-card-top {
+  top: 15px;
+  right: 0;
+
+  animation: floatingCard 4s ease-in-out infinite;
+}
+
+.floating-card-bottom {
+  bottom: 12px;
+  left: 0;
+
+  animation: floatingCard 4s ease-in-out infinite reverse;
+}
+
+@keyframes floatingCard {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+/* =====================================================
+   BACKGROUND GLOWS
+===================================================== */
+
+.hero-glow {
+  position: absolute;
+
+  width: 180px;
+  height: 180px;
+
+  border-radius: 50%;
+
+  filter: blur(70px);
+
+  pointer-events: none;
+}
+
+.hero-glow-one {
+  top: -80px;
+  left: 40%;
+
+  background: rgba(99, 102, 241, 0.08);
+}
+
+.hero-glow-two {
+  right: -80px;
+  bottom: -80px;
+
+  background: rgba(168, 85, 247, 0.09);
+}
+
+/* =====================================================
+   SECTION HEADER
+===================================================== */
+
+.events-section-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+
+  gap: 30px;
+
+  margin: 65px 0 30px;
+}
+
+.section-label {
+  color: #6366f1;
+
+  font-size: 10px;
+  font-weight: 850;
+
+  letter-spacing: 2px;
+}
+
+.events-section-header h2 {
+  margin: 7px 0 5px;
+
+  color: #0f172a;
+
+  font-size: 30px;
+
+  letter-spacing: -1px;
+
+  font-weight: 850;
+}
+
+.events-section-header p {
+  margin: 0;
+
+  color: #94a3b8;
+
+  font-size: 13px;
+}
+
+.events-count-pill {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  padding: 9px 14px;
 
   border: 1px solid #e2e8f0;
 
-  border-radius: 16px;
+  border-radius: 100px;
 
   background: white;
-
-  box-shadow:
-    0 8px 30px rgba(15, 23, 42, 0.06);
-
-  text-align: center;
-}
-
-.events-count-card span {
-  display: block;
-
-  color: #6366f1;
-
-  font-size: 32px;
-  font-weight: 850;
-
-  line-height: 1;
-}
-
-.events-count-card small {
-  display: block;
-
-  margin-top: 7px;
 
   color: #64748b;
 
   font-size: 11px;
   font-weight: 700;
+
+  box-shadow: 0 6px 20px rgba(15, 23, 42, 0.04);
 }
 
+.events-count-pill span {
+  color: #6366f1;
 
-/* =========================================
+  font-size: 14px;
+  font-weight: 900;
+}
+
+/* =====================================================
    EVENT GRID
-========================================= */
+===================================================== */
 
 .events-grid {
   display: grid;
 
-  grid-template-columns:
-    repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
 
-  gap: 24px;
+  gap: 25px;
 }
 
-
-/* =========================================
+/* =====================================================
    EVENT CARD
-========================================= */
+===================================================== */
 
 .premium-event-card {
   position: relative;
 
-  display: flex;
-  flex-direction: column;
+  overflow: hidden;
 
-  min-height: 390px;
+  border: 1px solid #e5e7eb;
 
-  padding: 25px;
-
-  border: 1px solid #e2e8f0;
-
-  border-radius: 18px;
+  border-radius: 22px;
 
   background: white;
 
-  box-shadow:
-    0 4px 15px rgba(15, 23, 42, 0.04);
-
-  overflow: hidden;
+  box-shadow: 0 5px 20px rgba(15, 23, 42, 0.04);
 
   transition:
-    transform 0.3s ease,
-    box-shadow 0.3s ease,
-    border-color 0.3s ease;
-}
-
-.premium-event-card::before {
-  content: "";
-
-  position: absolute;
-
-  top: 0;
-  left: 0;
-  right: 0;
-
-  height: 3px;
-
-  background:
-    linear-gradient(
-      90deg,
-      #6366f1,
-      #8b5cf6
-    );
-
-  opacity: 0;
-
-  transition: opacity 0.3s ease;
+    transform 0.35s ease,
+    box-shadow 0.35s ease,
+    border-color 0.35s ease;
 }
 
 .premium-event-card:hover {
-  transform: translateY(-7px);
+  transform: translateY(-9px);
 
   border-color: #c7d2fe;
 
-  box-shadow:
-    0 20px 45px rgba(15, 23, 42, 0.11);
+  box-shadow: 0 25px 55px rgba(79, 70, 229, 0.13);
 }
 
-.premium-event-card:hover::before {
-  opacity: 1;
+/* =====================================================
+   COVER
+===================================================== */
+
+.event-card-cover {
+  position: relative;
+
+  height: 190px;
+
+  overflow: hidden;
+
+  background: linear-gradient(135deg, #eef2ff, #f5f3ff);
 }
 
+.event-card-cover img {
+  width: 100%;
+  height: 100%;
 
-/* =========================================
-   CARD HEADER
-========================================= */
+  display: block;
 
-.event-card-header {
+  object-fit: cover;
+
+  transition: transform 0.6s ease;
+}
+
+.premium-event-card:hover .event-card-cover img {
+  transform: scale(1.08);
+}
+
+.cover-overlay {
+  position: absolute;
+
+  inset: 0;
+
+  background: linear-gradient(
+    to bottom,
+    rgba(15, 23, 42, 0.03),
+    rgba(15, 23, 42, 0.35)
+  );
+}
+
+.event-cover-placeholder {
+  width: 100%;
+  height: 100%;
+
   display: flex;
-
   align-items: center;
+  justify-content: center;
 
-  justify-content: space-between;
-
-  gap: 10px;
-
-  margin-bottom: 22px;
+  background:
+    radial-gradient(circle at 20% 20%, #818cf8, transparent 35%),
+    linear-gradient(135deg, #4338ca, #7c3aed);
 }
+
+.event-cover-placeholder span {
+  color: rgba(255, 255, 255, 0.95);
+
+  font-size: 70px;
+  font-weight: 900;
+
+  opacity: 0.85;
+}
+
+/* =====================================================
+   CATEGORY + STATUS
+===================================================== */
 
 .event-category {
-  padding: 6px 10px;
+  position: absolute;
 
-  border-radius: 7px;
+  left: 16px;
+  top: 16px;
 
-  background: #eef2ff;
+  z-index: 2;
+
+  padding: 7px 11px;
+
+  border: 1px solid rgba(255, 255, 255, 0.3);
+
+  border-radius: 8px;
+
+  background: rgba(255, 255, 255, 0.92);
 
   color: #4f46e5;
 
-  font-size: 10px;
-  font-weight: 800;
+  font-size: 9px;
+  font-weight: 850;
 
-  letter-spacing: 0.4px;
+  letter-spacing: 0.7px;
 
   text-transform: uppercase;
+
+  backdrop-filter: blur(10px);
 }
 
-.event-published {
+.event-status {
+  position: absolute;
+
+  right: 16px;
+  top: 16px;
+
+  z-index: 2;
+
   display: flex;
-
   align-items: center;
+  gap: 6px;
 
-  gap: 5px;
+  padding: 7px 10px;
 
-  color: #16a34a;
+  border-radius: 8px;
 
-  font-size: 10px;
-  font-weight: 700;
+  background: rgba(15, 23, 42, 0.65);
+
+  color: white;
+
+  font-size: 9px;
+  font-weight: 750;
+
+  backdrop-filter: blur(10px);
 }
 
-.event-published span {
+.event-status i {
   width: 6px;
   height: 6px;
 
   border-radius: 50%;
 
-  background: #22c55e;
+  background: #4ade80;
 
-  box-shadow:
-    0 0 0 3px #dcfce7;
+  box-shadow: 0 0 0 3px rgba(74, 222, 128, 0.15);
 }
 
+/* =====================================================
+   CARD BODY
+===================================================== */
 
-/* =========================================
-   TITLE
-========================================= */
+.event-card-body {
+  padding: 22px;
+}
 
 .event-title {
-  margin: 0 0 10px;
+  margin: 0;
 
   color: #0f172a;
 
-  font-size: 21px;
-  font-weight: 800;
+  font-size: 19px;
+  font-weight: 850;
 
   line-height: 1.3;
 
   letter-spacing: -0.4px;
 }
 
-
-/* =========================================
-   DESCRIPTION
-========================================= */
-
 .event-description {
   display: -webkit-box;
 
-  margin: 0;
+  margin: 10px 0 0;
 
-  min-height: 50px;
+  min-height: 47px;
 
   color: #64748b;
 
-  font-size: 13px;
+  font-size: 12px;
 
   line-height: 1.65;
 
@@ -307,20 +633,19 @@
   overflow: hidden;
 }
 
-
-/* =========================================
+/* =====================================================
    DETAILS
-========================================= */
+===================================================== */
 
 .event-details {
   display: flex;
   flex-direction: column;
 
-  gap: 13px;
+  gap: 12px;
 
-  margin-top: auto;
+  margin-top: 20px;
 
-  padding: 20px 0;
+  padding: 16px 0;
 
   border-top: 1px solid #f1f5f9;
   border-bottom: 1px solid #f1f5f9;
@@ -328,31 +653,29 @@
 
 .event-detail {
   display: flex;
-
   align-items: center;
 
   gap: 11px;
 }
 
 .detail-icon {
-  width: 32px;
-  height: 32px;
-
-  display: flex;
-
-  align-items: center;
-  justify-content: center;
+  width: 34px;
+  height: 34px;
 
   flex-shrink: 0;
 
-  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 9px;
 
   background: #f8fafc;
 
   font-size: 14px;
 }
 
-.event-detail div:last-child {
+.event-detail > div:last-child {
   display: flex;
   flex-direction: column;
 
@@ -362,103 +685,107 @@
 .event-detail span {
   color: #94a3b8;
 
-  font-size: 10px;
-  font-weight: 700;
+  font-size: 9px;
+  font-weight: 750;
+
+  letter-spacing: 0.7px;
 
   text-transform: uppercase;
-
-  letter-spacing: 0.5px;
 }
 
 .event-detail strong {
-  margin-top: 2px;
+  margin-top: 3px;
 
   overflow: hidden;
 
   color: #334155;
 
-  font-size: 12px;
-  font-weight: 700;
+  font-size: 11px;
+  font-weight: 750;
 
   white-space: nowrap;
+
   text-overflow: ellipsis;
 }
 
-
-/* =========================================
-   CARD FOOTER
-========================================= */
+/* =====================================================
+   FOOTER
+===================================================== */
 
 .event-card-footer {
-  padding-top: 18px;
+  margin-top: 17px;
 }
 
 .view-event-btn {
   display: flex;
-
   align-items: center;
   justify-content: space-between;
 
   width: 100%;
 
-  padding: 11px 14px;
+  padding: 12px 15px;
 
-  border-radius: 9px;
+  border-radius: 10px;
 
-  background: #6366f1;
+  background: linear-gradient(135deg, #6366f1, #7c3aed);
 
   color: white;
 
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 800;
 
   text-decoration: none;
 
+  box-shadow: 0 8px 20px rgba(99, 102, 241, 0.18);
+
   transition:
-    background 0.2s ease,
-    transform 0.2s ease;
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
 }
 
 .view-event-btn:hover {
-  background: #4f46e5;
+  transform: translateY(-2px);
 
-  transform: translateY(-1px);
+  box-shadow: 0 12px 25px rgba(99, 102, 241, 0.28);
 }
 
 .view-event-btn .arrow {
-  font-size: 17px;
+  font-size: 16px;
 
-  transition: transform 0.2s ease;
+  transition: transform 0.25s ease;
 }
 
 .view-event-btn:hover .arrow {
-  transform: translateX(4px);
+  transform: translateX(5px);
 }
 
 .admin-event-label {
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-  padding: 11px;
+  gap: 7px;
 
-  border-radius: 9px;
+  width: 100%;
+
+  padding: 12px;
+
+  border-radius: 10px;
 
   background: #f8fafc;
 
   color: #94a3b8;
 
-  text-align: center;
-
-  font-size: 12px;
-  font-weight: 700;
+  font-size: 11px;
+  font-weight: 750;
 }
 
+/* =====================================================
+   EMPTY STATE
+===================================================== */
 
-/* =========================================
-   LOADING
-========================================= */
-
-.events-loading {
-  min-height: 450px;
+.events-empty {
+  min-height: 360px;
 
   display: flex;
   flex-direction: column;
@@ -466,16 +793,77 @@
   align-items: center;
   justify-content: center;
 
-  gap: 15px;
+  padding: 50px;
 
-  color: #64748b;
+  border: 1px dashed #cbd5e1;
+
+  border-radius: 24px;
+
+  background: linear-gradient(135deg, #ffffff, #fafbff);
+
+  text-align: center;
 }
 
-.loading-spinner {
-  width: 38px;
-  height: 38px;
+.empty-icon {
+  width: 65px;
+  height: 65px;
 
-  border: 3px solid #e2e8f0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-bottom: 18px;
+
+  border-radius: 18px;
+
+  background: #eef2ff;
+
+  color: #6366f1;
+
+  font-size: 28px;
+}
+
+.events-empty h2 {
+  margin: 0 0 7px;
+
+  color: #0f172a;
+
+  font-size: 22px;
+}
+
+.events-empty p {
+  max-width: 430px;
+
+  margin: 0;
+
+  color: #94a3b8;
+
+  font-size: 13px;
+
+  line-height: 1.7;
+}
+
+/* =====================================================
+   LOADING
+===================================================== */
+
+.events-loading {
+  min-height: 500px;
+
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+}
+
+.loading-orbit {
+  width: 48px;
+  height: 48px;
+
+  margin-bottom: 18px;
+
+  border: 3px solid #e0e7ff;
 
   border-top-color: #6366f1;
 
@@ -484,19 +872,45 @@
   animation: spin 0.8s linear infinite;
 }
 
+.loading-dot {
+  width: 8px;
+  height: 8px;
+
+  margin: 8px;
+
+  border-radius: 50%;
+
+  background: #8b5cf6;
+}
+
+.events-loading h3 {
+  margin: 0;
+
+  color: #0f172a;
+
+  font-size: 16px;
+}
+
+.events-loading p {
+  margin-top: 6px;
+
+  color: #94a3b8;
+
+  font-size: 12px;
+}
+
 @keyframes spin {
   to {
     transform: rotate(360deg);
   }
 }
 
-
-/* =========================================
+/* =====================================================
    ERROR
-========================================= */
+===================================================== */
 
 .events-error {
-  min-height: 450px;
+  min-height: 500px;
 
   display: flex;
   flex-direction: column;
@@ -508,14 +922,14 @@
 }
 
 .error-icon {
-  width: 50px;
-  height: 50px;
+  width: 55px;
+  height: 55px;
 
   display: flex;
   align-items: center;
   justify-content: center;
 
-  margin-bottom: 15px;
+  margin-bottom: 16px;
 
   border-radius: 50%;
 
@@ -524,144 +938,143 @@
   color: #dc2626;
 
   font-size: 22px;
-  font-weight: 800;
+  font-weight: 900;
 }
 
 .events-error h2 {
-  margin: 0 0 5px;
+  margin: 0;
 
   color: #0f172a;
 }
 
 .events-error p {
-  color: #64748b;
-}
-
-
-/* =========================================
-   EMPTY
-========================================= */
-
-.events-empty {
-  min-height: 400px;
-
-  display: flex;
-  flex-direction: column;
-
-  align-items: center;
-  justify-content: center;
-
-  padding: 40px;
-
-  border: 1px dashed #cbd5e1;
-
-  border-radius: 20px;
-
-  background: white;
-
-  text-align: center;
-}
-
-.empty-icon {
-  width: 60px;
-  height: 60px;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  margin-bottom: 18px;
-
-  border-radius: 16px;
-
-  background: #eef2ff;
-
-  color: #6366f1;
-
-  font-size: 28px;
-}
-
-.events-empty h2 {
-  margin: 0 0 6px;
-
-  color: #0f172a;
-}
-
-.events-empty p {
-  max-width: 420px;
+  margin: 8px 0 20px;
 
   color: #64748b;
-
-  font-size: 14px;
 }
 
+.retry-btn {
+  padding: 10px 18px;
 
-/* =========================================
+  border: none;
+  border-radius: 9px;
+
+  background: #6366f1;
+
+  color: white;
+
+  font-size: 12px;
+  font-weight: 800;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease;
+}
+
+.retry-btn:hover {
+  transform: translateY(-2px);
+
+  background: #4f46e5;
+}
+
+/* =====================================================
    RESPONSIVE
-========================================= */
+===================================================== */
 
-@media (max-width: 1000px) {
+@media (max-width: 1050px) {
   .events-grid {
-    grid-template-columns:
-      repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .events-hero {
+    padding: 50px;
+  }
+
+  .hero-visual {
+    width: 270px;
   }
 }
 
-@media (max-width: 700px) {
+@media (max-width: 800px) {
+  .events-hero {
+    min-height: auto;
 
-  .events-page {
-    padding: 35px 0 60px;
+    padding: 45px 35px;
   }
 
-  .events-header {
-    flex-direction: column;
+  .hero-visual {
+    display: none;
+  }
 
+  .events-hero h1 {
+    font-size: 58px;
+  }
+}
+
+@media (max-width: 650px) {
+  .events-page {
+    width: 94%;
+
+    padding-top: 25px;
+  }
+
+  .events-hero {
+    padding: 35px 25px;
+
+    border-radius: 22px;
+  }
+
+  .events-hero h1 {
+    font-size: 45px;
+
+    letter-spacing: -2.5px;
+  }
+
+  .events-hero p {
+    font-size: 13px;
+  }
+
+  .hero-stats {
+    margin-top: 25px;
+  }
+
+  .events-section-header {
     align-items: flex-start;
 
-    margin-bottom: 30px;
+    flex-direction: column;
+
+    margin-top: 45px;
   }
 
-  .events-header h1 {
-    font-size: 42px;
-  }
-
-  .events-count-card {
-    width: 100%;
-
-    display: flex;
-
-    align-items: center;
-    justify-content: space-between;
-
-    text-align: left;
-  }
-
-  .events-count-card span {
-    font-size: 26px;
-  }
-
-  .events-count-card small {
-    margin-top: 0;
+  .events-count-pill {
+    align-self: flex-start;
   }
 
   .events-grid {
     grid-template-columns: 1fr;
-  }
 
+    gap: 20px;
+  }
 }
 
 @media (max-width: 420px) {
+  .events-hero h1 {
+    font-size: 38px;
 
-  .events-header h1 {
-    font-size: 36px;
-
-    letter-spacing: -1.5px;
+    letter-spacing: -2px;
   }
 
-  .premium-event-card {
-    padding: 20px;
-
-    min-height: 370px;
+  .events-hero {
+    padding: 30px 20px;
   }
 
+  .event-card-cover {
+    height: 175px;
+  }
+
+  .event-card-body {
+    padding: 19px;
+  }
 }

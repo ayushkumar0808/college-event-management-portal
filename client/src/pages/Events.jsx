@@ -15,7 +15,6 @@ const Events = () => {
     const fetchEvents = async () => {
       try {
         const response = await api.get("/events");
-
         setEvents(response.data.events || []);
       } catch (error) {
         console.error("Fetch Events Error:", error);
@@ -33,8 +32,12 @@ const Events = () => {
     return (
       <main className="events-page">
         <div className="events-loading">
-          <div className="loading-spinner"></div>
-          <p>Loading events...</p>
+          <div className="loading-orbit">
+            <div className="loading-dot"></div>
+          </div>
+
+          <h3>Loading events</h3>
+          <p>Finding the latest campus events...</p>
         </div>
       </main>
     );
@@ -45,8 +48,16 @@ const Events = () => {
       <main className="events-page">
         <div className="events-error">
           <div className="error-icon">!</div>
+
           <h2>Something went wrong</h2>
           <p>{error}</p>
+
+          <button
+            className="retry-btn"
+            onClick={() => window.location.reload()}
+          >
+            Try Again
+          </button>
         </div>
       </main>
     );
@@ -54,11 +65,16 @@ const Events = () => {
 
   return (
     <main className="events-page">
-      {/* ================= HEADER ================= */}
+      {/* HERO */}
+      <section className="events-hero">
+        <div className="hero-glow hero-glow-one"></div>
+        <div className="hero-glow hero-glow-two"></div>
 
-      <section className="events-header">
-        <div>
-          <span className="events-eyebrow">CAMPUS EVENTS</span>
+        <div className="hero-content">
+          <div className="hero-badge">
+            <span className="live-dot"></span>
+            CAMPUS EVENTS
+          </div>
 
           <h1>
             Discover what's
@@ -66,96 +82,158 @@ const Events = () => {
           </h1>
 
           <p>
-            Explore upcoming events, workshops, competitions and activities
-            happening across your college.
+            Explore workshops, competitions, seminars and exciting activities
+            happening across your college campus.
           </p>
+
+          <div className="hero-stats">
+            <div className="hero-stat">
+              <strong>{events.length}</strong>
+              <span>Upcoming Events</span>
+            </div>
+
+            <div className="stat-divider"></div>
+
+            <div className="hero-stat">
+              <strong>Campus</strong>
+              <span>Experiences</span>
+            </div>
+          </div>
         </div>
 
-        <div className="events-count-card">
-          <span>{events.length}</span>
-          <small>
-            {events.length === 1 ? "Event Available" : "Events Available"}
-          </small>
+        <div className="hero-visual">
+          <div className="floating-card floating-card-top">
+            <span>✦</span>
+            <div>
+              <strong>Discover</strong>
+              <small>New experiences</small>
+            </div>
+          </div>
+
+          <div className="hero-orb">
+            <div className="orb-inner">
+              <span>CE</span>
+            </div>
+          </div>
+
+          <div className="floating-card floating-card-bottom">
+            <span>✓</span>
+            <div>
+              <strong>Join Events</strong>
+              <small>Make memories</small>
+            </div>
+          </div>
         </div>
       </section>
 
-      {/* ================= EVENTS ================= */}
+      {/* SECTION HEADER */}
+      <section className="events-section-header">
+        <div>
+          <span className="section-label">EXPLORE</span>
 
+          <h2>Upcoming events</h2>
+
+          <p>Find something interesting and be part of the experience.</p>
+        </div>
+
+        <div className="events-count-pill">
+          <span>{events.length}</span>
+          {events.length === 1 ? "Event" : "Events"}
+        </div>
+      </section>
+
+      {/* EMPTY */}
       {events.length === 0 ? (
         <section className="events-empty">
-          <div className="empty-icon">◇</div>
+          <div className="empty-icon">✦</div>
 
           <h2>No events available</h2>
 
           <p>
-            There are currently no published events. Check back later for new
-            events.
+            There are currently no published events. Check back later for
+            something exciting.
           </p>
         </section>
       ) : (
+        /* EVENTS GRID */
         <section className="events-grid">
           {events.map((event) => (
             <article className="premium-event-card" key={event._id}>
-              {/* Card Header */}
+              {/* CARD IMAGE / VISUAL */}
+              <div className="event-card-cover">
+                {event.banner ? (
+                  <img src={event.banner} alt={event.title} />
+                ) : (
+                  <div className="event-cover-placeholder">
+                    <span>
+                      {event.category?.charAt(0).toUpperCase() || "E"}
+                    </span>
+                  </div>
+                )}
 
-              <div className="event-card-header">
+                <div className="cover-overlay"></div>
+
                 <span className="event-category">{event.category}</span>
 
-                <span className="event-published">
-                  <span></span>
+                <span className="event-status">
+                  <i></i>
                   Published
                 </span>
               </div>
 
-              {/* Title */}
+              {/* CARD BODY */}
+              <div className="event-card-body">
+                <h2 className="event-title">{event.title}</h2>
 
-              <h2 className="event-title">{event.title}</h2>
+                <p className="event-description">{event.description}</p>
 
-              {/* Description */}
+                {/* DETAILS */}
+                <div className="event-details">
+                  <div className="event-detail">
+                    <div className="detail-icon">📅</div>
 
-              <p className="event-description">{event.description}</p>
+                    <div>
+                      <span>Date</span>
 
-              {/* Event Details */}
+                      <strong>
+                        {new Date(event.eventDate).toLocaleDateString("en-IN", {
+                          day: "numeric",
+                          month: "short",
+                          year: "numeric",
+                        })}
+                      </strong>
+                    </div>
+                  </div>
 
-              <div className="event-details">
-                <div className="event-detail">
-                  <div className="detail-icon">📅</div>
+                  <div className="event-detail">
+                    <div className="detail-icon">📍</div>
 
-                  <div>
-                    <span>Date</span>
+                    <div>
+                      <span>Venue</span>
 
-                    <strong>
-                      {new Date(event.eventDate).toLocaleDateString("en-IN", {
-                        day: "numeric",
-                        month: "short",
-                        year: "numeric",
-                      })}
-                    </strong>
+                      <strong>{event.venue}</strong>
+                    </div>
                   </div>
                 </div>
 
-                <div className="event-detail">
-                  <div className="detail-icon">📍</div>
+                {/* FOOTER */}
+                <div className="event-card-footer">
+                  {user?.role !== "admin" ? (
+                    <Link
+                      to={`/events/${event._id}`}
+                      className="view-event-btn"
+                    >
+                      <span>Explore Event</span>
 
-                  <div>
-                    <span>Venue</span>
-
-                    <strong>{event.venue}</strong>
-                  </div>
+                      <span className="arrow">→</span>
+                    </Link>
+                  ) : (
+                    <div className="admin-event-label">
+                      <span>◈</span>
+                      Admin View
+                    </div>
+                  )}
                 </div>
-              </div>
-
-              {/* Footer */}
-
-              <div className="event-card-footer">
-                {user?.role !== "admin" ? (
-                  <Link to={`/events/${event._id}`} className="view-event-btn">
-                    <span>View Details</span>
-                    <span className="arrow">→</span>
-                  </Link>
-                ) : (
-                  <span className="admin-event-label">Admin View</span>
-                )}
               </div>
             </article>
           ))}
@@ -166,10 +244,6 @@ const Events = () => {
 };
 
 export default Events;
-
-
-
-
 
 
 

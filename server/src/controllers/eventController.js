@@ -134,6 +134,71 @@ const getAllEvents = async (req, res) => {
   }
 };
 
+const getAllAdminEvents = async (req, res) => {
+  try {
+    const {
+      search,
+      category,
+      status,
+      page = 1,
+      limit = 10,
+    } = req.query;
+
+    const filter = {};
+
+    // Search by title
+    if (search) {
+      filter.title = {
+        $regex: search,
+        $options: "i",
+      };
+    }
+
+    // Category filter
+    if (category) {
+      filter.category = category;
+    }
+
+    // Status filter
+    if (status) {
+      filter.status = status;
+    }
+
+    const pageNumber = Math.max(parseInt(page) || 1, 1);
+    const limitNumber = Math.min(parseInt(limit) || 10, 50);
+    const skip = (pageNumber - 1) * limitNumber;
+
+    const [events, totalEvents] = await Promise.all([
+      Event.find(filter)
+        .populate("organizer", "name email profileImage")
+        .sort({ createdAt: -1 })
+        .skip(skip)
+        .limit(limitNumber),
+
+      Event.countDocuments(filter),
+    ]);
+
+    return res.status(200).json({
+      success: true,
+      message: "Admin events fetched successfully",
+      events,
+      pagination: {
+        currentPage: pageNumber,
+        totalPages: Math.ceil(totalEvents / limitNumber),
+        totalEvents,
+        limit: limitNumber,
+      },
+    });
+  } catch (error) {
+    console.error("Get All Admin Events Error:", error);
+
+    return res.status(500).json({
+      success: false,
+      message: "Internal server error",
+    });
+  }
+};
+
 const getMyEvents = async (req, res) => {
   try {
     const events = await Event.find({
@@ -320,4 +385,5 @@ module.exports = {
   getMyEvents,
   updateEvent,
   deleteEvent,
+  getAllAdminEvents,
 };

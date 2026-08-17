@@ -20,10 +20,7 @@ const EventDetails = () => {
       } catch (error) {
         console.error("Fetch Event Error:", error);
 
-        setError(
-          error.response?.data?.message ||
-            "Failed to load event"
-        );
+        setError(error.response?.data?.message || "Failed to load event");
       } finally {
         setLoading(false);
       }
@@ -38,21 +35,13 @@ const EventDetails = () => {
       setMessage("");
       setError("");
 
-      const response = await api.post(
-        `/events/${eventId}/register`
-      );
+      const response = await api.post(`/events/${eventId}/register`);
 
-      setMessage(
-        response.data.message ||
-          "Successfully registered for event!"
-      );
+      setMessage(response.data.message || "Successfully registered for event!");
     } catch (error) {
       console.error("Registration Error:", error);
 
-      setError(
-        error.response?.data?.message ||
-          "Registration failed"
-      );
+      setError(error.response?.data?.message || "Registration failed");
     } finally {
       setRegistering(false);
     }
@@ -101,27 +90,20 @@ const EventDetails = () => {
 
   const eventDate = new Date(event.eventDate);
 
-  const formattedDate = eventDate.toLocaleDateString(
-    "en-IN",
-    {
-      weekday: "long",
-      day: "numeric",
-      month: "long",
-      year: "numeric",
-    }
-  );
+  const formattedDate = eventDate.toLocaleDateString("en-IN", {
+    weekday: "long",
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+  });
 
-  const formattedTime = eventDate.toLocaleTimeString(
-    "en-IN",
-    {
-      hour: "numeric",
-      minute: "2-digit",
-    }
-  );
+  const formattedTime = eventDate.toLocaleTimeString("en-IN", {
+    hour: "numeric",
+    minute: "2-digit",
+  });
 
   return (
     <main className="event-details-page">
-
       {/* Back */}
       <Link to="/events" className="details-back">
         <span>←</span>
@@ -130,13 +112,9 @@ const EventDetails = () => {
 
       {/* Hero */}
       <section className="event-hero">
-
         <div className="hero-content">
-
           <div className="hero-top">
-            <span className="hero-category">
-              {event.category}
-            </span>
+            <span className="hero-category">{event.category}</span>
 
             <span className="hero-status">
               <span></span>
@@ -146,10 +124,7 @@ const EventDetails = () => {
 
           <h1>{event.title}</h1>
 
-          <p className="hero-description">
-            {event.description}
-          </p>
-
+          <p className="hero-description">{event.description}</p>
         </div>
 
         <div className="hero-decoration">
@@ -157,35 +132,25 @@ const EventDetails = () => {
           <div className="decoration-circle circle-two"></div>
           <div className="decoration-grid"></div>
         </div>
-
       </section>
-
 
       {/* Main Content */}
       <section className="event-content">
-
         {/* Left */}
         <div className="event-main">
-
           <div className="details-section">
-
             <div className="section-heading">
               <span className="heading-line"></span>
 
               <h2>About this event</h2>
             </div>
 
-            <p className="full-description">
-              {event.description}
-            </p>
-
+            <p className="full-description">{event.description}</p>
           </div>
-
 
           {/* Event Information */}
 
           <div className="details-section">
-
             <div className="section-heading">
               <span className="heading-line"></span>
 
@@ -193,7 +158,6 @@ const EventDetails = () => {
             </div>
 
             <div className="information-grid">
-
               <div className="information-item">
                 <div className="information-icon date-icon">
                   <span>◷</span>
@@ -202,16 +166,11 @@ const EventDetails = () => {
                 <div>
                   <small>Date</small>
 
-                  <strong>
-                    {formattedDate}
-                  </strong>
+                  <strong>{formattedDate}</strong>
 
-                  <span>
-                    {formattedTime}
-                  </span>
+                  <span>{formattedTime}</span>
                 </div>
               </div>
-
 
               <div className="information-item">
                 <div className="information-icon venue-icon">
@@ -221,12 +180,9 @@ const EventDetails = () => {
                 <div>
                   <small>Venue</small>
 
-                  <strong>
-                    {event.venue}
-                  </strong>
+                  <strong>{event.venue}</strong>
                 </div>
               </div>
-
 
               <div className="information-item">
                 <div className="information-icon participant-icon">
@@ -236,12 +192,9 @@ const EventDetails = () => {
                 <div>
                   <small>Capacity</small>
 
-                  <strong>
-                    {event.maxParticipants} Participants
-                  </strong>
+                  <strong>{event.maxParticipants} Participants</strong>
                 </div>
               </div>
-
 
               <div className="information-item">
                 <div className="information-icon category-icon">
@@ -251,71 +204,46 @@ const EventDetails = () => {
                 <div>
                   <small>Category</small>
 
-                  <strong>
-                    {event.category}
-                  </strong>
+                  <strong>{event.category}</strong>
                 </div>
               </div>
-
             </div>
-
           </div>
-
         </div>
-
 
         {/* Right Registration Card */}
 
         <aside className="registration-card">
-
           <div className="registration-top">
-            <span className="registration-label">
-              EVENT REGISTRATION
-            </span>
+            <span className="registration-label">EVENT REGISTRATION</span>
 
-            <div className="registration-icon">
-              →
-            </div>
+            <div className="registration-icon">→</div>
           </div>
 
+          <h2>Ready to join?</h2>
 
-          <h2>
-            Ready to join?
-          </h2>
-
-          <p>
-            Secure your spot and be part of
-            this exciting college event.
-          </p>
-
+          <p>Secure your spot and be part of this exciting college event.</p>
 
           <div className="registration-deadline">
-            <span className="deadline-icon">
-              ⏱
-            </span>
+            <span className="deadline-icon">⏱</span>
 
             <div>
-              <small>
-                Registration deadline
-              </small>
+              <small>Registration deadline</small>
 
               <strong>
                 {event.registrationDeadline
-                  ? new Date(
-                      event.registrationDeadline
-                    ).toLocaleDateString(
+                  ? new Date(event.registrationDeadline).toLocaleDateString(
                       "en-IN",
                       {
                         day: "numeric",
                         month: "short",
                         year: "numeric",
-                      }
+                      },
                     )
                   : "Not specified"}
               </strong>
             </div>
           </div>
-
 
           {message && (
             <div className="success-message">
@@ -324,14 +252,12 @@ const EventDetails = () => {
             </div>
           )}
 
-
           {error && (
             <div className="registration-error">
               <span>!</span>
               {error}
             </div>
           )}
-
 
           <button
             className="register-button"
@@ -356,18 +282,157 @@ const EventDetails = () => {
             )}
           </button>
 
-
           <p className="registration-note">
-            Registration is subject to available
-            seats.
+            Registration is subject to available seats.
           </p>
-
         </aside>
-
       </section>
-
     </main>
   );
 };
 
 export default EventDetails;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// import { useEffect, useState } from "react";
+// import { useParams } from "react-router-dom";
+// import api from "../services/api";
+
+// const EventDetails = () => {
+//   const { eventId } = useParams();
+
+//   const [event, setEvent] = useState(null);
+//   const [loading, setLoading] = useState(true);
+//   const [registering, setRegistering] = useState(false);
+//   const [message, setMessage] = useState("");
+//   const [error, setError] = useState("");
+
+//   useEffect(() => {
+//     const fetchEvent = async () => {
+//       try {
+//         const response = await api.get(`/events/${eventId}`);
+//         setEvent(response.data.event);
+//       } catch (error) {
+//         console.error("Fetch Event Error:", error);
+
+//         setError(
+//           error.response?.data?.message ||
+//             "Failed to load event"
+//         );
+//       } finally {
+//         setLoading(false);
+//       }
+//     };
+
+//     fetchEvent();
+//   }, [eventId]);
+
+//   const handleRegister = async () => {
+//     try {
+//       setRegistering(true);
+//       setMessage("");
+//       setError("");
+
+//       const response = await api.post(
+//         `/events/${eventId}/register`
+//       );
+
+//       setMessage(
+//         response.data.message ||
+//           "Successfully registered for event!"
+//       );
+//     } catch (error) {
+//       console.error("Registration Error:", error);
+
+//       setError(
+//         error.response?.data?.message ||
+//           "Registration failed"
+//       );
+//     } finally {
+//       setRegistering(false);
+//     }
+//   };
+
+//   if (loading) {
+//     return <h2>Loading event...</h2>;
+//   }
+
+//   if (error && !event) {
+//     return <h2>{error}</h2>;
+//   }
+
+//   if (!event) {
+//     return <h2>Event not found</h2>;
+//   }
+
+//   return (
+//     <div>
+//       <h1>{event.title}</h1>
+
+//       <p>{event.description}</p>
+
+//       <p>
+//         <strong>Category:</strong> {event.category}
+//       </p>
+
+//       <p>
+//         <strong>Venue:</strong> {event.venue}
+//       </p>
+
+//       <p>
+//         <strong>Date:</strong>{" "}
+//         {new Date(event.eventDate).toLocaleDateString()}
+//       </p>
+
+//       <p>
+//         <strong>Maximum Participants:</strong>{" "}
+//         {event.maxParticipants}
+//       </p>
+
+//       {message && <p>{message}</p>}
+//       {error && <p>{error}</p>}
+
+//       <button
+//         onClick={handleRegister}
+//         disabled={registering}
+//       >
+//         {registering
+//           ? "Registering..."
+//           : "Register for Event"}
+//       </button>
+//     </div>
+//   );
+// };
+
+// export default EventDetails;

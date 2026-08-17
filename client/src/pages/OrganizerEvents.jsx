@@ -17,10 +17,7 @@ const OrganizerEvents = () => {
       } catch (error) {
         console.error("Fetch My Events Error:", error);
 
-        setError(
-          error.response?.data?.message ||
-            "Failed to load your events",
-        );
+        setError(error.response?.data?.message || "Failed to load your events");
       } finally {
         setLoading(false);
       }
@@ -45,10 +42,7 @@ const OrganizerEvents = () => {
     } catch (error) {
       console.error("Delete Event Error:", error);
 
-      alert(
-        error.response?.data?.message ||
-          "Failed to delete event",
-      );
+      alert(error.response?.data?.message || "Failed to delete event");
     }
   };
 
@@ -77,146 +71,94 @@ const OrganizerEvents = () => {
 
   return (
     <main className="organizer-events-page">
-
       {/* Header */}
 
       <section className="events-page-header">
-
         <div>
-          <span className="events-eyebrow">
-            ORGANIZER WORKSPACE
-          </span>
+          <span className="events-eyebrow">ORGANIZER WORKSPACE</span>
 
           <h1>My Events</h1>
 
           <p>
-            Manage your events, registrations and
-            participants from one place.
+            Manage your events, registrations and participants from one place.
           </p>
         </div>
 
-        <Link
-          to="/organizer/events/create"
-          className="create-event-btn"
-        >
+        <Link to="/organizer/events/create" className="create-event-btn">
           <span>＋</span>
           Create Event
         </Link>
-
       </section>
-
 
       {/* Stats */}
 
       <section className="events-mini-stats">
-
         <div className="event-mini-card">
-
-          <div className="mini-icon purple">
-            ◈
-          </div>
+          <div className="mini-icon purple">◈</div>
 
           <div>
             <span>TOTAL EVENTS</span>
             <strong>{events.length}</strong>
           </div>
-
         </div>
 
-
         <div className="event-mini-card">
-
-          <div className="mini-icon blue">
-            ◎
-          </div>
+          <div className="mini-icon blue">◎</div>
 
           <div>
             <span>YOUR WORKSPACE</span>
             <strong>Active</strong>
           </div>
-
         </div>
 
-
         <div className="event-mini-card">
-
-          <div className="mini-icon green">
-            ✓
-          </div>
+          <div className="mini-icon green">✓</div>
 
           <div>
             <span>MANAGEMENT</span>
             <strong>Ready</strong>
           </div>
-
         </div>
-
       </section>
-
 
       {/* Event List */}
 
       {events.length === 0 ? (
-
         <section className="events-empty">
-
-          <div className="empty-icon">
-            ◈
-          </div>
+          <div className="empty-icon">◈</div>
 
           <h2>No events yet</h2>
 
           <p>
-            You haven't created any events.
-            Start by creating your first college event.
+            You haven't created any events. Start by creating your first college
+            event.
           </p>
 
-          <Link
-            to="/organizer/events/create"
-            className="empty-create-btn"
-          >
+          <Link to="/organizer/events/create" className="empty-create-btn">
             ＋ Create Your First Event
           </Link>
-
         </section>
-
       ) : (
-
         <section className="events-list-section">
-
           <div className="events-list-heading">
-
             <div>
               <span>EVENT LIBRARY</span>
               <h2>Your Events</h2>
             </div>
 
             <p>
-              {events.length}{" "}
-              {events.length === 1 ? "event" : "events"}
+              {events.length} {events.length === 1 ? "event" : "events"}
             </p>
-
           </div>
 
-
           <div className="organizer-event-grid">
-
             {events.map((event) => (
-
-              <article
-                className="organizer-event-card"
-                key={event._id}
-              >
-
+              <article className="organizer-event-card" key={event._id}>
                 {/* Banner */}
 
                 <div className="event-card-banner">
-
                   {event.banner ? (
-                    <img
-                      src={event.banner}
-                      alt={event.title}
-                    />
+                    <img src={event.banner} alt={event.title} />
                   ) : (
                     <div className="event-banner-placeholder">
                       <span>✦</span>
@@ -226,34 +168,23 @@ const OrganizerEvents = () => {
                   <span className="event-category">
                     {event.category || "Event"}
                   </span>
-
                 </div>
-
 
                 {/* Content */}
 
                 <div className="event-card-content">
-
                   <h3>{event.title}</h3>
 
-                  <p className="event-description">
-                    {event.description}
-                  </p>
-
+                  <p className="event-description">{event.description}</p>
 
                   <div className="event-meta">
-
                     <div>
-                      <span className="meta-icon">
-                        ◷
-                      </span>
+                      <span className="meta-icon">◷</span>
 
                       <div>
                         <small>DATE</small>
                         <strong>
-                          {new Date(
-                            event.eventDate,
-                          ).toLocaleDateString(
+                          {new Date(event.eventDate).toLocaleDateString(
                             "en-IN",
                             {
                               day: "numeric",
@@ -265,27 +196,19 @@ const OrganizerEvents = () => {
                       </div>
                     </div>
 
-
                     <div>
-                      <span className="meta-icon">
-                        ◎
-                      </span>
+                      <span className="meta-icon">◎</span>
 
                       <div>
                         <small>VENUE</small>
-                        <strong>
-                          {event.venue || "Not specified"}
-                        </strong>
+                        <strong>{event.venue || "Not specified"}</strong>
                       </div>
                     </div>
-
                   </div>
-
 
                   {/* Actions */}
 
                   <div className="event-card-actions">
-
                     <Link
                       to={`/organizer/events/${event._id}/registrations`}
                       className="registrations-btn"
@@ -294,7 +217,6 @@ const OrganizerEvents = () => {
                       Registrations
                     </Link>
 
-
                     <Link
                       to={`/organizer/events/${event._id}/edit`}
                       className="edit-event-btn"
@@ -302,35 +224,47 @@ const OrganizerEvents = () => {
                       Edit
                     </Link>
 
-
                     <button
                       className="delete-event-btn"
-                      onClick={() =>
-                        handleDelete(event._id)
-                      }
+                      onClick={() => handleDelete(event._id)}
                     >
                       Delete
                     </button>
-
                   </div>
-
                 </div>
-
               </article>
-
             ))}
-
           </div>
-
         </section>
-
       )}
-
     </main>
   );
 };
 
 export default OrganizerEvents;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
